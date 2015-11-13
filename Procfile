@@ -1,0 +1,1 @@
+gunicorn track_review.wsgi --log file -
