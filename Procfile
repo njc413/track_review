@@ -1,1 +1,1 @@
-gunicorn track_review.wsgi --log file -
+web: gunicorn track_review.wsgi --log file -
