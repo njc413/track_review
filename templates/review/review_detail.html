@@ -1,0 +1,6 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>{{ review.Track }}</h1>
+<p>{{ review.Review }}</p>
+<p>Reviewed by {{ review.user.username }} on {{ review.created_at }}</p>
+{% endblock %}

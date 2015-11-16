@@ -2,8 +2,8 @@
 {% block content %}
 {% for review in object_list %}
 <div class="panel">
-  <h3>{{ review.Track }}</h3>
-  <p>Asked by {{ review.user.username }} on {{ review.created_at }}</p>
+  <h3><a href="{{ review.get_absolute_url }}">{{ review.Track }}</a></h3>
+  <p>Reviewed by {{ review.user.username }} on {{ review.created_at }}</p>
 </div>
 {% endfor %}
 {% endblock %}
