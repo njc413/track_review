@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for review in object_list %}
+<div class="panel">
+  <h3>{{ review.Track }}</h3>
+  <p>Asked by {{ review.user.username }} on {{ review.created_at }}</p>
+</div>
+{% endfor %}
+{% endblock %}

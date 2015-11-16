@@ -120,5 +120,5 @@ STATICFILES_DIRS = (os.path.join(MAIN_DIR, 'static'),)
 STATIC_ROOT = 'staticfiles'
 
 LOGIN_URL = '/user/login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/review/'
 SITE_ID = 1
