@@ -3,11 +3,17 @@
 <div class="intro-header">
   <div class="container">
     <div class="intro-message">
+      {% if user.is_authenticated %}
+      <h1>Welcome Back to Track Review!</h1>
+      <h3>Honest Reviews by Real Riders!</h3>
+       {% else %}
       <h1>Welcome to Track Review!</h1>
-      <h3>Honest Reviews from Real Riders</h3>
+      <h3>Honest Reviews by Real Riders!</h3>
+     <div><p><a class="btn btn-lg btn-primary" href="{% url 'registration_register' %}">Sign up</a></p>
+</div>
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock %}
-
 
