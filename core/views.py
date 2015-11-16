@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView, ListView, DetailView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from .models import *
 
@@ -24,3 +24,8 @@ class ReviewListView(ListView):
 class ReviewDetailView(DetailView):
     model = Review
     template_name = 'review/review_detail.html'
+
+class ReviewUpdateView(UpdateView):
+    model = Review
+    template_name = 'review/review_form.html'
+    fields = ['Track', 'Review']

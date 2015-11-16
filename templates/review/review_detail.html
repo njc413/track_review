@@ -2,5 +2,7 @@
 {% block content %}
 <h1>{{ review.Track }}</h1>
 <p>{{ review.Review }}</p>
-<p>Reviewed by {{ review.user.username }} on {{ review.created_at }}</p>
+{% if review.user == user %}
+<p><a href="{% url 'review_update' pk=review.id %}">Edit review</a></p>
+{% endif %}
 {% endblock %}
