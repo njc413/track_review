@@ -10,7 +10,7 @@ class Home(TemplateView):
 class ReviewCreateView(CreateView):
     model = Review
     template_name = 'review/review_form.html'
-    fields = ['title', 'description']
+    fields = ['Track', 'Review']
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
