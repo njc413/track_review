@@ -4,5 +4,6 @@
 <p>{{ review.Review }}</p>
 {% if review.user == user %}
 <p><a href="{% url 'review_update' pk=review.id %}">Edit review</a></p>
+<p><a href="{% url 'review_delete' pk=review.id %}">Delete review</a></p>
 {% endif %}
 {% endblock %}
