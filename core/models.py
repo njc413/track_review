@@ -14,3 +14,12 @@ class Review(models.Model):
 
     def get_absolute_url(self):
         return reverse("review_detail", args=[self.id])
+
+class Reply(models.Model):
+    review = models.ForeignKey(Review)
+    user = models.ForeignKey(User)
+    created_at = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+
+    def __unicode__(self):
+      return self.text
