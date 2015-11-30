@@ -56,3 +56,12 @@ class ReplyCreateView(CreateView):
       form.instance.user = self.request.user
       form.instance.review = Review.objects.get(id=self.kwargs['pk'])
       return super(ReplyCreateView, self).form_valid(form)
+
+class ReplyUpdateView(UpdateView):
+  model = Reply
+  pk_url_kwarg = 'reply_pk'
+  template_name = 'reply/reply_form.html'
+  fields = ['text']
+
+  def get_success_url(self):
+      return self.object.review.get_absolute_url()

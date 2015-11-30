@@ -12,6 +12,9 @@
 {% for reply in replies %}
 <div class="panel">
   <p>{{ reply.text }}</p>
+  {% if reply.user == user %}
+  <p><a href="{% url 'reply_update' review_pk=review.id reply_pk=reply.id %}">Edit reply</a></p>
+  {% endif %}
   <p>{{reply.user.username }} Replied</p>
 </div>
 {% endfor %}
