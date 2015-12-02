@@ -52,6 +52,7 @@
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'review_list' %}">Reviews</a></li>
                   <li><a href="{% url 'review_create' %}">Add review</a></li>
+                  <li><a href="{% url 'user_detail' slug=user.username %}">Profile</a></li>
                   <li><a href="{% url 'auth_logout' %}">Logout</a></li>
                   {% else %}
                   <li><a href="{% url 'auth_login' %}">Login</a></li>
