@@ -3,7 +3,7 @@
 {% for review in object_list %}
 <div class="panel">
   <h3><a href="{{ review.get_absolute_url }}">{{ review.Track }}</a></h3>
-  <p>Reviewed by {{ review.user.username }} on {{ review.created_at }}</p>
+  <p>Reviewed by <a href="{% url 'user_detail' slug=review.user.username %}">{{ review.user.username }}</a> on {{ review.created_at }}</p>
   <p>{{ review.vote_set.all.count }} Vote{{ review.vote_set.all.count|pluralize }}</p>
   <form method="post" action="{% url 'vote' %}">
       {% csrf_token %}

@@ -3,6 +3,7 @@
 <h1>{{ review.Track }}</h1>
 <p>{{ review.Review }}</p>
 {% if review.user == user %}
+<p>Reviewed by <a href="{% url 'user_detail' slug=review.user.username %}">{{ review.user.username }}</a> on {{ review.created_at }}</p>
 <p><a href="{% url 'review_update' pk=review.id %}">Edit review</a></p>
 <p><a href="{% url 'review_delete' pk=review.id %}">Delete review</a></p>
 {% endif %}
@@ -16,7 +17,7 @@
   <p><a href="{% url 'reply_update' review_pk=review.id reply_pk=reply.id %}">Edit reply</a></p>
   <p><a href="{% url 'reply_delete' review_pk=review.id reply_pk=reply.id %}">Delete reply</a></p>
   {% endif %}
-  <p>{{reply.user.username }} Replied</p>
+  <p><a href="{% url 'user_detail' slug=reply.user.username %}">{{reply.user.username }} Replied</a></p>
 </div>
 {% endfor %}
 <p><a href="{% url 'reply_create' pk=review.id %}">Reply here</a></p>
