@@ -164,3 +164,8 @@ class UserDeleteView(DeleteView):
       user.save()
       return redirect(self.get_success_url())
 
+class SearchReviewListView(ReviewListView):
+    def get_queryset(self):
+        incoming_query_string = self.request.GET.get('query', '')
+        return Review.objects.filter(Track__icontains=incoming_query_string)
+
