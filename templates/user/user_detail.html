@@ -4,6 +4,9 @@
 <p>Email address: {{ user_in_view.email }}</p>
 <p>First name: {{ user_in_view.first_name }}</p>
 <p>Last name: {{ user_in_view.last_name }}</p>
+{% if user_in_view == user %}
+<p><a href="{% url 'user_update' slug=user.username %}">Edit profile</a></p>
+{% endif %}
 <h3>Reviews ({{ reviews.count }})</h3>
 {% for review in reviews %}
     <p><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></p>
