@@ -1,6 +1,49 @@
 {% extends 'base.html'%}
 {% block content %}
 <h1>{{ review.Track }}</h1>
+{% if rating.rating__avg < 0.5 %}
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  ({{ rating.rating__avg }})
+{% elif rating.rating__avg < 1.5 %}
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  ({{ rating.rating__avg }})
+{% elif rating.rating__avg < 2.5 %}
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  ({{ rating.rating__avg }})
+{% elif rating.rating__avg < 3.5 %}
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  ({{ rating.rating__avg }})
+{% elif rating.rating__avg < 4.5 %}
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star-empty"></span>
+  ({{ rating.rating__avg }})
+{% else %}
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  <span class="glyphicon glyphicon-star"></span>
+  ({{ rating.rating__avg }})
+{% endif %}
 <p>{{ review.Review }}</p>
 {% if review.user == user %}
 <p>Reviewed by <a href="{% url 'user_detail' slug=review.user.username %}">{{ review.user.username }}</a> on {{ review.created_at }}</p>

@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+RATING_CHOICES = (
+(0, 'None'),
+(1, '*'),
+(2, '**'),
+(3, '***'),
+(4, '****'),
+(5, '*****'),
+)
 
 # Create your models here.
 class Review(models.Model):
@@ -8,6 +16,7 @@ class Review(models.Model):
     Review = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
+    rating = models.IntegerField(choices=RATING_CHOICES, default=0)
 
     def __unicode__ (self):
         return self.Track

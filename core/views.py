@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import PermissionDenied
 from .models import *
 from .forms import *
+from django.db.models import Avg
 
 # Create your views here.
 class Home(TemplateView):
@@ -12,7 +13,7 @@ class Home(TemplateView):
 class ReviewCreateView(CreateView):
     model = Review
     template_name = 'review/review_form.html'
-    fields = ['Track', 'Review']
+    fields = ['Track', 'Review', 'rating']
     success_url = reverse_lazy('review_list')
 
     def form_valid(self, form):
@@ -35,12 +36,14 @@ class ReviewDetailView(DetailView):
         context['replies'] = replies
         user_replies = Reply.objects.filter(review=review, user=self.request.user)
         context['user_replies'] = user_replies
+        rating = Review.objects.filter(Review=Review).aggregate(Avg('rating'))
+        context['rating'] = rating
         return context
 
 class ReviewUpdateView(UpdateView):
     model = Review
     template_name = 'review/review_form.html'
-    fields = ['Track', 'Review']
+    fields = ['Track', 'Review', 'rating']
 
     def get_object(self, *args, **kwargs):
             object = super(ReviewUpdateView, self).get_object(*args, **kwargs)
