@@ -22,6 +22,7 @@ class ReviewCreateView(CreateView):
 class ReviewListView(ListView):
     model = Review
     template_name = 'review/review_list.html'
+    paginate_by = 5
 
 class ReviewDetailView(DetailView):
     model = Review
