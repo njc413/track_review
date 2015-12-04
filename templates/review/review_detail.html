@@ -1,6 +1,7 @@
 {% extends 'base.html'%}
 {% block content %}
 <h1>{{ review.Track }}</h1>
+<p>{% if review.image_file %}<img src="{{ review.image_file.url }}" />{% endif %}</p>
 {% if rating.rating__avg < 0.5 %}
   <span class="glyphicon glyphicon-star-empty"></span>
   <span class="glyphicon glyphicon-star-empty"></span>

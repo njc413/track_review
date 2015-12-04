@@ -10,6 +10,15 @@ RATING_CHOICES = (
 (5, '*****'),
 )
 
+import os
+import uuid
+
+def upload_to_location(instance, filename):
+    blocks = filename.split('.')
+    ext = blocks[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    instance.title = blocks[0]
+    return os.path.join('uploads/', filename)
 # Create your models here.
 class Review(models.Model):
     Track = models.CharField(max_length=300)
@@ -17,6 +26,7 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
     rating = models.IntegerField(choices=RATING_CHOICES, default=0)
+    image_file = models.ImageField(upload_to=upload_to_location, null=True, blank=True)
 
     def __unicode__ (self):
         return self.Track

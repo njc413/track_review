@@ -13,7 +13,7 @@ class Home(TemplateView):
 class ReviewCreateView(CreateView):
     model = Review
     template_name = 'review/review_form.html'
-    fields = ['Track', 'Review', 'rating']
+    fields = ['Track', 'Review', 'rating', 'image_file']
     success_url = reverse_lazy('review_list')
 
     def form_valid(self, form):
@@ -43,7 +43,7 @@ class ReviewDetailView(DetailView):
 class ReviewUpdateView(UpdateView):
     model = Review
     template_name = 'review/review_form.html'
-    fields = ['Track', 'Review', 'rating']
+    fields = ['Track', 'Review', 'rating', 'image_file']
 
     def get_object(self, *args, **kwargs):
             object = super(ReviewUpdateView, self).get_object(*args, **kwargs)
